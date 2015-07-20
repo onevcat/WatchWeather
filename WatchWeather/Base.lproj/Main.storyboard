@@ -24,17 +24,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EX7-y5-0l7">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="2NO-Ug-2hs"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="Title" id="ufx-Dp-do6"/>
-                                </items>
-                            </navigationBar>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="FyT-zp-gfP">
-                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="rain" translatesAutoresizingMaskIntoConstraints="NO" id="CPw-ho-me9" userLabel="Weather">
                                 <rect key="frame" x="235" y="189" width="130" height="121"/>
@@ -72,29 +63,19 @@
                             <constraint firstItem="CPw-ho-me9" firstAttribute="centerX" secondItem="zK0-G9-wr9" secondAttribute="centerX" id="Fwd-01-yaW"/>
                             <constraint firstItem="N9Z-Ug-zXv" firstAttribute="top" secondItem="fIT-tg-grE" secondAttribute="bottom" constant="12" id="H5w-Qz-o1E"/>
                             <constraint firstAttribute="trailing" secondItem="FyT-zp-gfP" secondAttribute="trailing" id="Hq4-fD-m8j"/>
-                            <constraint firstItem="CPw-ho-me9" firstAttribute="centerY" secondItem="FyT-zp-gfP" secondAttribute="centerY" id="ML7-IJ-jlT"/>
-                            <constraint firstAttribute="trailing" secondItem="EX7-y5-0l7" secondAttribute="trailing" id="NO8-LK-XwL"/>
-                            <constraint firstItem="EX7-y5-0l7" firstAttribute="top" secondItem="zK0-G9-wr9" secondAttribute="top" id="OEw-lj-Lfp"/>
-                            <constraint firstItem="EX7-y5-0l7" firstAttribute="leading" secondItem="zK0-G9-wr9" secondAttribute="leading" id="ON6-wi-auC"/>
-                            <constraint firstItem="FyT-zp-gfP" firstAttribute="top" secondItem="EX7-y5-0l7" secondAttribute="bottom" id="Pgs-PG-itn"/>
                             <constraint firstItem="xg9-da-pX4" firstAttribute="baseline" secondItem="N9Z-Ug-zXv" secondAttribute="baseline" id="ZJO-OT-YPk"/>
                             <constraint firstItem="CPw-ho-me9" firstAttribute="centerY" secondItem="zK0-G9-wr9" secondAttribute="centerY" constant="-50" id="f5i-Dw-uvT"/>
                             <constraint firstItem="hq0-Xb-I6q" firstAttribute="trailing" secondItem="fIT-tg-grE" secondAttribute="leading" constant="-30" id="nKk-X2-mCv"/>
+                            <constraint firstItem="FyT-zp-gfP" firstAttribute="top" secondItem="zK0-G9-wr9" secondAttribute="top" id="ncr-zS-HUg"/>
                             <constraint firstItem="N9Z-Ug-zXv" firstAttribute="trailing" secondItem="zK0-G9-wr9" secondAttribute="trailing" constant="-30" id="pUc-u7-3Vy"/>
                             <constraint firstItem="XRS-yA-iFW" firstAttribute="top" secondItem="FyT-zp-gfP" secondAttribute="bottom" id="sXn-rw-ISR"/>
                             <constraint firstItem="hq0-Xb-I6q" firstAttribute="baseline" secondItem="fIT-tg-grE" secondAttribute="baseline" id="vrv-fT-auq"/>
                             <constraint firstItem="XRS-yA-iFW" firstAttribute="top" secondItem="N9Z-Ug-zXv" secondAttribute="bottom" constant="20" id="wMz-5g-HNF"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="ML7-IJ-jlT"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="highTemprature" destination="N9Z-Ug-zXv" id="zHQ-ce-z5K"/>
                         <outlet property="lowTemprature" destination="fIT-tg-grE" id="WTu-Ol-nGi"/>
-                        <outlet property="titleItem" destination="ufx-Dp-do6" id="DvR-lR-SZW"/>
                         <outlet property="weatherImage" destination="CPw-ho-me9" id="QTp-LX-e4k"/>
                     </connections>
                 </viewController>
