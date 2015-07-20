@@ -15,7 +15,7 @@
         <!--Weather View Controller-->
         <scene sceneID="W8h-9n-Nie">
             <objects>
-                <viewController id="TGu-8e-D1x" customClass="WeatherViewController" customModule="WatchWeather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WeatherViewController" id="TGu-8e-D1x" customClass="WeatherViewController" customModule="WatchWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="P6u-Si-L0m"/>
                         <viewControllerLayoutGuide type="bottom" id="XRS-yA-iFW"/>
