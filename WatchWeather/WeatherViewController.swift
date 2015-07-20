@@ -10,6 +10,11 @@ import UIKit
 
 class WeatherViewController: UIViewController {
 
+    @IBOutlet weak var titleItem: UINavigationItem!
+    @IBOutlet weak var weatherImage: UIImageView!
+    @IBOutlet weak var lowTemprature: UILabel!
+    @IBOutlet weak var highTemprature: UILabel!
+    
     enum Day: Int {
         case DayBeforeYesterday = -2
         case Yesterday

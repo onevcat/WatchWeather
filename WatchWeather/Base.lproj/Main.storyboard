@@ -91,6 +91,12 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="highTemprature" destination="N9Z-Ug-zXv" id="zHQ-ce-z5K"/>
+                        <outlet property="lowTemprature" destination="fIT-tg-grE" id="WTu-Ol-nGi"/>
+                        <outlet property="titleItem" destination="ufx-Dp-do6" id="DvR-lR-SZW"/>
+                        <outlet property="weatherImage" destination="CPw-ho-me9" id="QTp-LX-e4k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4MG-ZL-qJ6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
