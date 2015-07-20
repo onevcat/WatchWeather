@@ -34,7 +34,7 @@
                                 </items>
                             </navigationBar>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="FyT-zp-gfP">
-                                <rect key="frame" x="0.0" y="44" width="598" height="556"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                             </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="rain" translatesAutoresizingMaskIntoConstraints="NO" id="CPw-ho-me9" userLabel="Weather">
                                 <rect key="frame" x="235" y="189" width="130" height="121"/>
@@ -71,7 +71,7 @@
                             <constraint firstItem="FyT-zp-gfP" firstAttribute="leading" secondItem="zK0-G9-wr9" secondAttribute="leading" id="AqT-3b-2UX"/>
                             <constraint firstItem="CPw-ho-me9" firstAttribute="centerX" secondItem="zK0-G9-wr9" secondAttribute="centerX" id="Fwd-01-yaW"/>
                             <constraint firstItem="N9Z-Ug-zXv" firstAttribute="top" secondItem="fIT-tg-grE" secondAttribute="bottom" constant="12" id="H5w-Qz-o1E"/>
-                            <constraint firstAttribute="trailing" secondItem="FyT-zp-gfP" secondAttribute="trailing" constant="2" id="Hq4-fD-m8j"/>
+                            <constraint firstAttribute="trailing" secondItem="FyT-zp-gfP" secondAttribute="trailing" id="Hq4-fD-m8j"/>
                             <constraint firstItem="CPw-ho-me9" firstAttribute="centerY" secondItem="FyT-zp-gfP" secondAttribute="centerY" id="ML7-IJ-jlT"/>
                             <constraint firstAttribute="trailing" secondItem="EX7-y5-0l7" secondAttribute="trailing" id="NO8-LK-XwL"/>
                             <constraint firstItem="EX7-y5-0l7" firstAttribute="top" secondItem="zK0-G9-wr9" secondAttribute="top" id="OEw-lj-Lfp"/>
