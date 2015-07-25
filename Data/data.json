@@ -1,4 +1,4 @@
-{"weather": [
+{"weathers": [
 	{"day": -2, "state": 0, "low_temp": 18, "high_temp": 25},
 	{"day": -1, "state": 2, "low_temp": 9, "high_temp": 14},
 	{"day": 0, "state": 1, "low_temp": 12, "high_temp": 16},
