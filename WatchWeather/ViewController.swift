@@ -11,14 +11,36 @@ import WatchWeatherKit
 
 class ViewController: UIPageViewController {
 
+    var data = [Day: Weather]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         dataSource = self
-        let vc = weatherViewControllerForDay(.Today)
+        
+        let vc = UIViewController()
+        vc.view.backgroundColor = UIColor.whiteColor()
         setViewControllers([vc], direction: .Forward, animated: true, completion: nil)
         
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        
+        WeatherClient.sharedClient.requestWeathers { (weather, error) -> Void in
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            if error == nil && weather != nil {
+                
+                for w in weather! where w != nil {
+                    self.data[w!.day] = w
+                }
+                
+                let vc = self.weatherViewControllerForDay(.Today)
+                self.setViewControllers([vc], direction: .Forward, animated: false, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "Error", message: error?.description ?? "Unknown Error", preferredStyle: .Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,7 +52,7 @@ class ViewController: UIPageViewController {
 
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("WeatherViewController") as! WeatherViewController
         let nav = UINavigationController(rootViewController: vc)
-        vc.day = day
+        vc.weather = data[day]
         
         return nav
     }
@@ -40,7 +62,7 @@ extension ViewController: UIPageViewControllerDataSource {
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         guard let nav = viewController as? UINavigationController,
                   viewController = nav.viewControllers.first as? WeatherViewController,
-                  day = viewController.day else {
+                  day = viewController.weather?.day else {
             return nil
         }
         
@@ -58,7 +80,7 @@ extension ViewController: UIPageViewControllerDataSource {
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         guard let nav = viewController as? UINavigationController,
             viewController = nav.viewControllers.first as? WeatherViewController,
-            day = viewController.day else {
+            day = viewController.weather?.day else {
                 return nil
         }
         

@@ -22,7 +22,9 @@ public struct WeatherClient {
     public func requestWeathers(handler: ((weather: [Weather?]?, error: NSError?) -> Void)?) {
         
         guard let url = NSURL(string: "https://raw.githubusercontent.com/onevcat/WatchWeather/master/Data/data.json") else {
-            handler?(weather: nil, error: NSError(domain: NSURLErrorDomain, code: NSURLErrorBadURL, userInfo: nil))
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                handler?(weather: nil, error: NSError(domain: NSURLErrorDomain, code: NSURLErrorBadURL, userInfo: nil))
+            })
             return
         }
         
@@ -33,10 +35,15 @@ public struct WeatherClient {
                 do {
                     let object = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
                     if let dictionary = object as? [String: AnyObject] {
-                        handler?(weather: Weather.parseWeatherResult(dictionary), error: nil)
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            handler?(weather: Weather.parseWeatherResult(dictionary), error: nil)
+                        })
                     }
                 } catch _ {
-                    handler?(weather: nil, error: NSError(domain: WatchWeatherKitErrorDomain, code: WatchWeatherKitError.CorruptedJSON, userInfo: nil))
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        handler?(weather: nil, error: NSError(domain: WatchWeatherKitErrorDomain, code: WatchWeatherKitError.CorruptedJSON, userInfo: nil))
+                    })
+                    
                 }
             }
         }
