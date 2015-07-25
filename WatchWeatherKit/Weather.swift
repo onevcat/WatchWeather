@@ -16,25 +16,24 @@ public struct Weather {
     public let state: State
     public let highTemperature: Int
     public let lowTemperature: Int
+    public let day: Day
     
     public init?(json: [String: AnyObject]) {
         
         guard let stateNumber = json["state"] as? Int,
-                  state = State(rawValue: stateNumber) else {
+                  state = State(rawValue: stateNumber),
+                  highTemperature = json["high_temp"] as? Int,
+                  lowTemperature = json["low_temp"] as? Int,
+                  dayNumber = json["day"] as? Int,
+                  day = Day(rawValue: dayNumber) else {
             return nil
         }
         
-        guard let highTemperature = json["high_temp"] as? Int else {
-            return nil
-        }
-        
-        guard let lowTemperature = json["low_temp"] as? Int else {
-            return nil
-        }
         
         self.state = state
         self.highTemperature = highTemperature
         self.lowTemperature = lowTemperature
+        self.day = day
     }
 }
 
