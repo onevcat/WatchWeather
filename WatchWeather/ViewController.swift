@@ -18,6 +18,7 @@ class ViewController: UIPageViewController {
         dataSource = self
         let vc = weatherViewControllerForDay(.Today)
         setViewControllers([vc], direction: .Forward, animated: true, completion: nil)
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -37,3 +37,14 @@ public struct Weather {
         self.lowTemperature = lowTemperature
     }
 }
+
+// MARK: - Parsing weather request
+extension Weather {
+    static func parseWeatherResult(dictionary: [String: AnyObject]) -> [Weather?]? {
+        if let weathers = dictionary["weathers"] as? [[String: AnyObject]] {
+            return weathers.map{ Weather(json: $0) }
+        } else {
+            return nil
+        }
+    }
+}
