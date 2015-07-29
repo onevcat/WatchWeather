@@ -8,14 +8,39 @@
 
 import WatchKit
 import Foundation
-
+import WatchWeatherWatchKit
 
 class InterfaceController: WKInterfaceController {
 
+    static var index = Day.DayBeforeYesterday.rawValue
+    static var token: dispatch_once_t = 0
+    
+    static var controllers = [Day: InterfaceController]()
+
+    @IBOutlet var weatherImage: WKInterfaceImage!
+    @IBOutlet var highTempratureLabel: WKInterfaceLabel!
+    @IBOutlet var lowTempratureLabel: WKInterfaceLabel!
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        
+
         // Configure interface objects here.
+        guard let day = Day(rawValue: InterfaceController.index) else {
+            return
+        }
+        
+        InterfaceController.controllers[day] = self
+        InterfaceController.index = InterfaceController.index + 1
+        
+        if day == .Today {
+            becomeCurrentPage()
+        }
+        
+        dispatch_once(&InterfaceController.token) { () -> Void in
+            WeatherClient.sharedClient.requestWeathers({ (weathers, error) -> Void in
+                print(weathers)
+            })
+        }
     }
 
     override func willActivate() {
@@ -28,4 +53,7 @@ class InterfaceController: WKInterfaceController {
         super.didDeactivate()
     }
 
+    func updateWeather(weather: Weather) {
+        
+    }
 }

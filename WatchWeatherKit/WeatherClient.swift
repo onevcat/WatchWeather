@@ -19,29 +19,29 @@ public struct WeatherClient {
     public static let sharedClient = WeatherClient()
     let session = NSURLSession.sharedSession()
     
-    public func requestWeathers(handler: ((weather: [Weather?]?, error: NSError?) -> Void)?) {
+    public func requestWeathers(handler: ((weathers: [Weather?]?, error: NSError?) -> Void)?) {
         
         guard let url = NSURL(string: "https://raw.githubusercontent.com/onevcat/WatchWeather/master/Data/data.json") else {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                handler?(weather: nil, error: NSError(domain: NSURLErrorDomain, code: NSURLErrorBadURL, userInfo: nil))
+                handler?(weathers: nil, error: NSError(domain: NSURLErrorDomain, code: NSURLErrorBadURL, userInfo: nil))
             })
             return
         }
         
         let task = session.dataTaskWithURL(url) { (data, response, error) -> Void in
             if error != nil {
-                handler?(weather: nil, error: error)
+                handler?(weathers: nil, error: error)
             } else {
                 do {
                     let object = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments)
                     if let dictionary = object as? [String: AnyObject] {
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            handler?(weather: Weather.parseWeatherResult(dictionary), error: nil)
+                            handler?(weathers: Weather.parseWeatherResult(dictionary), error: nil)
                         })
                     }
-                } catch _ {
+                } catch {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        handler?(weather: nil, error: NSError(domain: WatchWeatherKitErrorDomain, code: WatchWeatherKitError.CorruptedJSON, userInfo: nil))
+                        handler?(weathers: nil, error: NSError(domain: WatchWeatherKitErrorDomain, code: WatchWeatherKitError.CorruptedJSON, userInfo: nil))
                     })
                     
                 }

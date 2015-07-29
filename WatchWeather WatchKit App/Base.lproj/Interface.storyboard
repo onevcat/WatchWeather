@@ -1,21 +1,168 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6724" systemVersion="14A389" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="8152.3" systemVersion="14E46" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9r7-3M-f0y" defaultGlanceController="0uZ-2p-rRc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3735"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8124.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="8077.2"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--前天-->
+        <scene sceneID="XXl-Zl-N4Z">
+            <objects>
+                <controller identifier="daybeforeyesterday" title="前天" id="9r7-3M-f0y" customClass="InterfaceController" customModule="WatchWeather_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <imageView width="100" height="93" alignment="center" image="rain" id="kaG-aw-JJ6"/>
+                        <group width="1" alignment="left" id="x6R-AT-lMT">
+                            <items>
+                                <label alignment="right" text="最高：" id="YJY-lL-VF0"/>
+                                <label alignment="right" text="18℃" id="yUN-f5-ggL"/>
+                                <label alignment="right" text="   " id="l1L-LD-ivy"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="cLQ-wu-RtS">
+                            <items>
+                                <label alignment="right" text="最低：" id="jww-Dt-wwK"/>
+                                <label alignment="right" text="18℃" id="bUl-Ga-oUf"/>
+                                <label alignment="right" text="   " id="Bmr-Br-jIz"/>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="highTempratureLabel" destination="yUN-f5-ggL" id="RXM-PR-8pd"/>
+                        <outlet property="lowTempratureLabel" destination="bUl-Ga-oUf" id="cnL-86-ZYY"/>
+                        <outlet property="weatherImage" destination="kaG-aw-JJ6" id="7ax-i2-8pj"/>
+                        <segue destination="Ucf-8I-KVV" kind="relationship" relationship="nextPage" id="9A9-d9-5qA"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="235" y="91.5"/>
+        </scene>
+        <!--昨天-->
+        <scene sceneID="lly-ge-gM6">
+            <objects>
+                <controller identifier="yesterday" title="昨天" id="Ucf-8I-KVV" customClass="InterfaceController" customModule="WatchWeather_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <imageView width="100" height="93" alignment="center" image="rain" id="1Vw-HC-w0M"/>
+                        <group width="1" alignment="left" id="l3S-3N-gFr">
+                            <items>
+                                <label alignment="right" text="最高：" id="eSe-VJ-Zjs"/>
+                                <label alignment="right" text="18℃" id="FbG-hg-0Vy"/>
+                                <label alignment="right" text="   " id="l7L-ka-yR6"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="Y8E-tU-MXp">
+                            <items>
+                                <label alignment="right" text="最低：" id="r25-8e-q98"/>
+                                <label alignment="right" text="18℃" id="K9H-zJ-tby"/>
+                                <label alignment="right" text="   " id="Pil-qI-H5c"/>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="highTempratureLabel" destination="FbG-hg-0Vy" id="cvS-S9-QSW"/>
+                        <outlet property="lowTempratureLabel" destination="K9H-zJ-tby" id="ed0-DD-OIe"/>
+                        <outlet property="weatherImage" destination="1Vw-HC-w0M" id="soj-T6-OHL"/>
+                        <segue destination="AgC-eL-Hgc" kind="relationship" relationship="nextPage" id="dZL-7p-zKt"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="456" y="91.5"/>
+        </scene>
+        <!--今天-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller identifier="today" title="今天" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchWeather_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <imageView width="100" height="93" alignment="center" image="rain" id="EIb-p6-UPq"/>
+                        <group width="1" alignment="left" id="7s1-Kp-KtE">
+                            <items>
+                                <label alignment="right" text="最高：" id="8gI-jm-Ur8"/>
+                                <label alignment="right" text="18℃" id="Pwb-ie-5yz"/>
+                                <label alignment="right" text="   " id="llk-S3-e9r"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="EHh-OD-87j">
+                            <items>
+                                <label alignment="right" text="最低：" id="N3t-0v-ZyH"/>
+                                <label alignment="right" text="18℃" id="HO1-7B-A4I"/>
+                                <label alignment="right" text="   " id="4TW-FQ-WbZ"/>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="highTempratureLabel" destination="Pwb-ie-5yz" id="2lv-vx-thm"/>
+                        <outlet property="lowTempratureLabel" destination="HO1-7B-A4I" id="DkE-3S-q4d"/>
+                        <outlet property="weatherImage" destination="EIb-p6-UPq" id="TOg-rg-8dM"/>
+                        <segue destination="DmY-TJ-sb8" kind="relationship" relationship="nextPage" id="qCF-Z5-Kbl"/>
+                    </connections>
+                </controller>
             </objects>
-            <point key="canvasLocation" x="235" y="347"/>
+            <point key="canvasLocation" x="678" y="91.5"/>
+        </scene>
+        <!--明天-->
+        <scene sceneID="tpd-Qe-jGp">
+            <objects>
+                <controller identifier="tomorrow" title="明天" id="DmY-TJ-sb8" customClass="InterfaceController" customModule="WatchWeather_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <imageView width="100" height="93" alignment="center" image="rain" id="P6l-9m-PgQ"/>
+                        <group width="1" alignment="left" id="ycv-qV-sfi">
+                            <items>
+                                <label alignment="right" text="最高：" id="AgH-dz-BTS"/>
+                                <label alignment="right" text="18℃" id="xJp-Kd-9h6"/>
+                                <label alignment="right" text="   " id="Jrh-AX-eMH"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="vq5-eb-vCZ">
+                            <items>
+                                <label alignment="right" text="最低：" id="aAg-zx-dVv"/>
+                                <label alignment="right" text="18℃" id="oiW-eg-QqV"/>
+                                <label alignment="right" text="   " id="WT6-7t-bnH"/>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="highTempratureLabel" destination="xJp-Kd-9h6" id="JxG-zh-ey2"/>
+                        <outlet property="lowTempratureLabel" destination="oiW-eg-QqV" id="QNx-39-znU"/>
+                        <outlet property="weatherImage" destination="P6l-9m-PgQ" id="4Zn-Rw-lHc"/>
+                        <segue destination="UEf-S0-FIt" kind="relationship" relationship="nextPage" id="oLM-1M-Bzd"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="235" y="381.5"/>
+        </scene>
+        <!--后天-->
+        <scene sceneID="EyA-fh-HaE">
+            <objects>
+                <controller identifier="dayaftertomorrow" title="后天" id="UEf-S0-FIt" customClass="InterfaceController" customModule="WatchWeather_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <imageView width="100" height="93" alignment="center" image="rain" id="RF7-k2-sTE"/>
+                        <group width="1" alignment="left" id="X0q-8x-u7c">
+                            <items>
+                                <label alignment="right" text="最高：" id="8BK-E3-JQl"/>
+                                <label alignment="right" text="18℃" id="B6U-Zt-jf4"/>
+                                <label alignment="right" text="   " id="jWH-X6-Y91"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="e7u-Az-nTw">
+                            <items>
+                                <label alignment="right" text="最低：" id="hhv-gB-31C"/>
+                                <label alignment="right" text="18℃" id="wtX-L8-D61"/>
+                                <label alignment="right" text="   " id="8y3-Mk-uID"/>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="highTempratureLabel" destination="B6U-Zt-jf4" id="XXP-YY-acI"/>
+                        <outlet property="lowTempratureLabel" destination="wtX-L8-D61" id="hQN-ph-3Ca"/>
+                        <outlet property="weatherImage" destination="RF7-k2-sTE" id="Wzt-uU-R4e"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="456" y="381.5"/>
         </scene>
         <!--Glance Interface Controller-->
         <scene sceneID="BOz-TT-tkC">
             <objects>
-                <glanceController spacing="0.0" id="0uZ-2p-rRc" customClass="GlanceController" customModuleProvider="target">
+                <glanceController spacing="0.0" id="0uZ-2p-rRc" customClass="GlanceController" customModule="WatchWeather_WatchKit_App" customModuleProvider="target">
                     <items>
                         <group alignment="left" id="t8f-Gd-c4y"/>
                         <group alignment="left" id="uCw-4Q-Ouw"/>
@@ -44,7 +191,7 @@
         <!--Notification Controller-->
         <scene sceneID="KIl-fV-djm">
             <objects>
-                <controller id="gdX-wl-uQE" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="gdX-wl-uQE" customClass="NotificationController" customModule="WatchWeather_WatchKit_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="553" y="1001"/>
         </scene>
