@@ -10,19 +10,19 @@
             <objects>
                 <controller identifier="daybeforeyesterday" title="前天" id="9r7-3M-f0y" customClass="InterfaceController" customModule="WatchWeather_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <imageView width="100" height="93" alignment="center" image="rain" id="kaG-aw-JJ6"/>
-                        <group width="1" alignment="left" id="x6R-AT-lMT">
-                            <items>
-                                <label alignment="right" text="最高：" id="YJY-lL-VF0"/>
-                                <label alignment="right" text="18℃" id="yUN-f5-ggL"/>
-                                <label alignment="right" text="   " id="l1L-LD-ivy"/>
-                            </items>
-                        </group>
+                        <imageView width="100" height="93" alignment="center" id="kaG-aw-JJ6"/>
                         <group width="1" alignment="left" id="cLQ-wu-RtS">
                             <items>
                                 <label alignment="right" text="最低：" id="jww-Dt-wwK"/>
-                                <label alignment="right" text="18℃" id="bUl-Ga-oUf"/>
+                                <label alignment="right" id="bUl-Ga-oUf"/>
                                 <label alignment="right" text="   " id="Bmr-Br-jIz"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="x6R-AT-lMT">
+                            <items>
+                                <label alignment="right" text="最高：" id="YJY-lL-VF0"/>
+                                <label alignment="right" id="yUN-f5-ggL"/>
+                                <label alignment="right" text="   " id="l1L-LD-ivy"/>
                             </items>
                         </group>
                     </items>
@@ -41,19 +41,19 @@
             <objects>
                 <controller identifier="yesterday" title="昨天" id="Ucf-8I-KVV" customClass="InterfaceController" customModule="WatchWeather_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <imageView width="100" height="93" alignment="center" image="rain" id="1Vw-HC-w0M"/>
-                        <group width="1" alignment="left" id="l3S-3N-gFr">
-                            <items>
-                                <label alignment="right" text="最高：" id="eSe-VJ-Zjs"/>
-                                <label alignment="right" text="18℃" id="FbG-hg-0Vy"/>
-                                <label alignment="right" text="   " id="l7L-ka-yR6"/>
-                            </items>
-                        </group>
+                        <imageView width="100" height="93" alignment="center" id="1Vw-HC-w0M"/>
                         <group width="1" alignment="left" id="Y8E-tU-MXp">
                             <items>
                                 <label alignment="right" text="最低：" id="r25-8e-q98"/>
-                                <label alignment="right" text="18℃" id="K9H-zJ-tby"/>
+                                <label alignment="right" id="K9H-zJ-tby"/>
                                 <label alignment="right" text="   " id="Pil-qI-H5c"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="l3S-3N-gFr">
+                            <items>
+                                <label alignment="right" text="最高：" id="eSe-VJ-Zjs"/>
+                                <label alignment="right" id="FbG-hg-0Vy"/>
+                                <label alignment="right" text="   " id="l7L-ka-yR6"/>
                             </items>
                         </group>
                     </items>
@@ -72,19 +72,19 @@
             <objects>
                 <controller identifier="today" title="今天" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="WatchWeather_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <imageView width="100" height="93" alignment="center" image="rain" id="EIb-p6-UPq"/>
-                        <group width="1" alignment="left" id="7s1-Kp-KtE">
-                            <items>
-                                <label alignment="right" text="最高：" id="8gI-jm-Ur8"/>
-                                <label alignment="right" text="18℃" id="Pwb-ie-5yz"/>
-                                <label alignment="right" text="   " id="llk-S3-e9r"/>
-                            </items>
-                        </group>
+                        <imageView width="100" height="93" alignment="center" id="EIb-p6-UPq"/>
                         <group width="1" alignment="left" id="EHh-OD-87j">
                             <items>
                                 <label alignment="right" text="最低：" id="N3t-0v-ZyH"/>
-                                <label alignment="right" text="18℃" id="HO1-7B-A4I"/>
+                                <label alignment="right" id="HO1-7B-A4I"/>
                                 <label alignment="right" text="   " id="4TW-FQ-WbZ"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="7s1-Kp-KtE">
+                            <items>
+                                <label alignment="right" text="最高：" id="8gI-jm-Ur8"/>
+                                <label alignment="right" id="Pwb-ie-5yz"/>
+                                <label alignment="right" text="   " id="llk-S3-e9r"/>
                             </items>
                         </group>
                     </items>
@@ -103,19 +103,19 @@
             <objects>
                 <controller identifier="tomorrow" title="明天" id="DmY-TJ-sb8" customClass="InterfaceController" customModule="WatchWeather_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <imageView width="100" height="93" alignment="center" image="rain" id="P6l-9m-PgQ"/>
-                        <group width="1" alignment="left" id="ycv-qV-sfi">
-                            <items>
-                                <label alignment="right" text="最高：" id="AgH-dz-BTS"/>
-                                <label alignment="right" text="18℃" id="xJp-Kd-9h6"/>
-                                <label alignment="right" text="   " id="Jrh-AX-eMH"/>
-                            </items>
-                        </group>
+                        <imageView width="100" height="93" alignment="center" id="P6l-9m-PgQ"/>
                         <group width="1" alignment="left" id="vq5-eb-vCZ">
                             <items>
                                 <label alignment="right" text="最低：" id="aAg-zx-dVv"/>
-                                <label alignment="right" text="18℃" id="oiW-eg-QqV"/>
+                                <label alignment="right" id="oiW-eg-QqV"/>
                                 <label alignment="right" text="   " id="WT6-7t-bnH"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="ycv-qV-sfi">
+                            <items>
+                                <label alignment="right" text="最高：" id="AgH-dz-BTS"/>
+                                <label alignment="right" id="xJp-Kd-9h6"/>
+                                <label alignment="right" text="   " id="Jrh-AX-eMH"/>
                             </items>
                         </group>
                     </items>
@@ -134,19 +134,19 @@
             <objects>
                 <controller identifier="dayaftertomorrow" title="后天" id="UEf-S0-FIt" customClass="InterfaceController" customModule="WatchWeather_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <imageView width="100" height="93" alignment="center" image="rain" id="RF7-k2-sTE"/>
-                        <group width="1" alignment="left" id="X0q-8x-u7c">
-                            <items>
-                                <label alignment="right" text="最高：" id="8BK-E3-JQl"/>
-                                <label alignment="right" text="18℃" id="B6U-Zt-jf4"/>
-                                <label alignment="right" text="   " id="jWH-X6-Y91"/>
-                            </items>
-                        </group>
+                        <imageView width="100" height="93" alignment="center" id="RF7-k2-sTE"/>
                         <group width="1" alignment="left" id="e7u-Az-nTw">
                             <items>
                                 <label alignment="right" text="最低：" id="hhv-gB-31C"/>
-                                <label alignment="right" text="18℃" id="wtX-L8-D61"/>
+                                <label alignment="right" id="wtX-L8-D61"/>
                                 <label alignment="right" text="   " id="8y3-Mk-uID"/>
+                            </items>
+                        </group>
+                        <group width="1" alignment="left" id="X0q-8x-u7c">
+                            <items>
+                                <label alignment="right" text="最高：" id="8BK-E3-JQl"/>
+                                <label alignment="right" id="B6U-Zt-jf4"/>
+                                <label alignment="right" text="   " id="jWH-X6-Y91"/>
                             </items>
                         </group>
                     </items>

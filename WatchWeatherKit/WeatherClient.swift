@@ -17,7 +17,7 @@ public struct WatchWeatherKitError {
 public struct WeatherClient {
     
     public static let sharedClient = WeatherClient()
-    let session = NSURLSession.sharedSession()
+    let session = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration())
     
     public func requestWeathers(handler: ((weathers: [Weather?]?, error: NSError?) -> Void)?) {
         
