@@ -39,6 +39,8 @@
 		D15DB7BE1B5D0439007035F6 /* WatchWeatherKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D15DB7A81B5D0439007035F6 /* WatchWeatherKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D15DB7C71B5D04A7007035F6 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15DB7C61B5D04A7007035F6 /* Day.swift */; };
 		D15DB7C91B5D06A4007035F6 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15DB7C81B5D06A4007035F6 /* Weather.swift */; };
+		D197DE8A1B6E1B6800C266C6 /* SwiftDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D197DE891B6E1B6800C266C6 /* SwiftDate.swift */; };
+		D197DE8B1B6E1B6800C266C6 /* SwiftDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D197DE891B6E1B6800C266C6 /* SwiftDate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,6 +189,7 @@
 		D15DB7BA1B5D0439007035F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D15DB7C61B5D04A7007035F6 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		D15DB7C81B5D06A4007035F6 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		D197DE891B6E1B6800C266C6 /* SwiftDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftDate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -352,6 +355,7 @@
 		D15DB7A91B5D0439007035F6 /* WatchWeatherKit */ = {
 			isa = PBXGroup;
 			children = (
+				D197DE891B6E1B6800C266C6 /* SwiftDate.swift */,
 				D15DB7AA1B5D0439007035F6 /* WatchWeatherKit.h */,
 				D15DB7AC1B5D0439007035F6 /* Info.plist */,
 				D15DB7C61B5D04A7007035F6 /* Day.swift */,
@@ -675,6 +679,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D13EDEF51B69000F0059A498 /* Day.swift in Sources */,
+				D197DE8B1B6E1B6800C266C6 /* SwiftDate.swift in Sources */,
 				D13EDEF61B69000F0059A498 /* Weather.swift in Sources */,
 				D13EDEF71B69000F0059A498 /* WeatherClient.swift in Sources */,
 			);
@@ -723,6 +728,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D15DB7C91B5D06A4007035F6 /* Weather.swift in Sources */,
+				D197DE8A1B6E1B6800C266C6 /* SwiftDate.swift in Sources */,
 				D15DB7C71B5D04A7007035F6 /* Day.swift in Sources */,
 				D1230B931B631332002747ED /* WeatherClient.swift in Sources */,
 			);
@@ -1149,6 +1155,7 @@
 				D13EDEED1B68FEBF0059A498 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D15DB73E1B5BE753007035F6 /* Build configuration list for PBXProject "WatchWeather" */ = {
 			isa = XCConfigurationList;
