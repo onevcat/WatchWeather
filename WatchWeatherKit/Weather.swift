@@ -47,3 +47,39 @@ extension Weather {
         }
     }
 }
+
+
+private let kWeatherResultsKey = "com.onevcat.watchweather.results"
+private let kWeatherRequestDateKey = "com.onevcat.watchweather.request_date"
+
+public extension Weather {
+    static func storeWeathersResult(dictionary: [String: AnyObject]) {
+        let userDefault = NSUserDefaults.standardUserDefaults()
+        userDefault.setObject(dictionary, forKey: kWeatherResultsKey)
+        userDefault.setObject(NSDate(), forKey: kWeatherRequestDateKey)
+        
+        userDefault.synchronize()
+    }
+    
+    public static func storedWeathers() -> (requestDate: NSDate?, weathers: [Weather?]?) {
+        let userDefault = NSUserDefaults.standardUserDefaults()
+        let date = userDefault.objectForKey(kWeatherRequestDateKey) as? NSDate
+        
+        let weathers: [Weather?]?
+        if let dic = userDefault.objectForKey(kWeatherResultsKey) as? [String: AnyObject] {
+            weathers = parseWeatherResult(dic)
+        } else {
+            weathers = nil
+        }
+        
+        return (date, weathers)
+    }
+}
+
+public extension Weather {
+    public func dateByDayWithRequestDate(requestDate: NSDate) -> NSDate {
+        let dayOffset = day.rawValue
+        let date = requestDate.set(componentsDict: ["hour":0, "minute":0, "second":0])!
+        return date + dayOffset.day
+    }
+}
