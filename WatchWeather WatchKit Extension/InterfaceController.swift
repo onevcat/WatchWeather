@@ -60,6 +60,8 @@ class InterfaceController: WKInterfaceController {
                     controller.weather = weather
                 }
                 
+                ComplicationController.reloadComplications()
+                
             } else {
                 let action = WKAlertAction(title: "Retry", style: .Default, handler: { () -> Void in
                     self?.request()

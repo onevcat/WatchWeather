@@ -168,4 +168,11 @@ class ComplicationController: NSObject, CLKComplicationDataSource {
         return imageTemplate
     }
     
+    static func reloadComplications() {
+        let server = CLKComplicationServer.sharedInstance()
+        for complication in server.activeComplications {
+            server.reloadTimelineForComplication(complication)
+        }
+    }
+    
 }
