@@ -37,11 +37,11 @@ public struct WeatherClient {
                     if let dictionary = object as? [String: AnyObject] {
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             let weathers = Weather.parseWeatherResult(dictionary)
-                            handler?(weathers: weathers, error: nil)
                             
                             if weathers != nil {
                                 Weather.storeWeathersResult(dictionary)
                             }
+                            handler?(weathers: weathers, error: nil)
                         })
                     }
                 } catch {
