@@ -39,7 +39,7 @@ public struct WeatherClient {
                             let weathers = Weather.parseWeatherResult(dictionary)
                             
                             if weathers != nil {
-                                Weather.storeWeathersResult(dictionary)
+                                Weather.storeWeathersResult(dictionary, requestDate: NSDate())
                             }
                             handler?(weathers: weathers, error: nil)
                         })
@@ -53,7 +53,7 @@ public struct WeatherClient {
             }
         }
         
-        task!.resume()
+        task.resume()
     }
 }
 

@@ -49,16 +49,27 @@ extension Weather {
 }
 
 
-private let kWeatherResultsKey = "com.onevcat.watchweather.results"
-private let kWeatherRequestDateKey = "com.onevcat.watchweather.request_date"
+public let kWeatherResultsKey = "com.onevcat.watchweather.results"
+public let kWeatherRequestDateKey = "com.onevcat.watchweather.request_date"
 
 public extension Weather {
-    static func storeWeathersResult(dictionary: [String: AnyObject]) {
+    static func storeWeathersResult(dictionary: [String: AnyObject], requestDate: NSDate) {
         let userDefault = NSUserDefaults.standardUserDefaults()
         userDefault.setObject(dictionary, forKey: kWeatherResultsKey)
-        userDefault.setObject(NSDate(), forKey: kWeatherRequestDateKey)
+        userDefault.setObject(requestDate, forKey: kWeatherRequestDateKey)
         
         userDefault.synchronize()
+    }
+    
+    static func storedWeathersDictionary() -> [String: AnyObject]? {
+        
+        let userDefault = NSUserDefaults.standardUserDefaults()
+        if let date = userDefault.objectForKey(kWeatherRequestDateKey) as? NSDate,
+                dic = userDefault.objectForKey(kWeatherResultsKey) as? [String: AnyObject] {
+            return [kWeatherResultsKey: dic, kWeatherRequestDateKey: date]
+        } else {
+            return nil
+        }
     }
     
     public static func storedWeathers() -> (requestDate: NSDate?, weathers: [Weather?]?) {

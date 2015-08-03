@@ -8,14 +8,22 @@
 
 import UIKit
 import WatchWeatherKit
+import WatchConnectivity
 
 class ViewController: UIPageViewController {
 
+    var session: WCSession?
     var data = [Day: Weather]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        if WCSession.isSupported() {
+            session = WCSession.defaultSession()
+            session!.delegate = self
+            session!.activateSession()
+        }
         
         dataSource = self
         
@@ -35,6 +43,15 @@ class ViewController: UIPageViewController {
                 
                 let vc = self.weatherViewControllerForDay(.Today)
                 self.setViewControllers([vc], direction: .Forward, animated: false, completion: nil)
+                
+
+                if let dic = Weather.storedWeathersDictionary() {
+                    do {
+                        try self.session?.updateApplicationContext(dic)   
+                    } catch _ {
+                        
+                    }
+                }
             } else {
                 let alert = UIAlertController(title: "Error", message: error?.description ?? "Unknown Error", preferredStyle: .Alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
@@ -96,3 +113,6 @@ extension ViewController: UIPageViewControllerDataSource {
     }
 }
 
+extension ViewController: WCSessionDelegate {
+    
+}

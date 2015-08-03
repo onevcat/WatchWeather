@@ -9,6 +9,7 @@
 import WatchKit
 import Foundation
 import WatchWeatherWatchKit
+import WatchConnectivity
 
 class InterfaceController: WKInterfaceController {
 
@@ -45,23 +46,37 @@ class InterfaceController: WKInterfaceController {
         }
 
         dispatch_once(&InterfaceController.token) { () -> Void in
-            self.request()
+            
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "becomeActive", name: applicationDidBecomeActiveNotification, object: nil)
+            
+            let session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
         }
+    }
+    
+    func becomeActive() {
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            if self.shouldRequest() {
+                self.request()
+            } else {
+                let (_, weathers) = Weather.storedWeathers()
+                if let weathers = weathers {
+                    self.updateWeathers(weathers)
+                }
+            }
+        }
+    }
+    
+    func shouldRequest() -> Bool {
+        let (requestDate, _) = Weather.storedWeathers()
+        return requestDate < NSDate.today()
     }
     
     func request() {
         WeatherClient.sharedClient.requestWeathers({ [weak self] (weathers, error) -> Void in
             if let weathers = weathers {
-                for weather in weathers where weather != nil {
-                    guard let controller = InterfaceController.controllers[weather!.day] else {
-                        continue
-                    }
-                    
-                    controller.weather = weather
-                }
-                
-                ComplicationController.reloadComplications()
-                
+                self?.updateWeathers(weathers)
             } else {
                 let action = WKAlertAction(title: "Retry", style: .Default, handler: { () -> Void in
                     self?.request()
@@ -70,6 +85,18 @@ class InterfaceController: WKInterfaceController {
                 self?.presentAlertControllerWithTitle("Error", message: errorMessage, preferredStyle: .Alert, actions: [action])
             }
         })
+    }
+    
+    func updateWeathers(weathers: [Weather?]) {
+        for weather in weathers where weather != nil {
+            guard let controller = InterfaceController.controllers[weather!.day] else {
+                continue
+            }
+            
+            controller.weather = weather
+        }
+        
+        ComplicationController.reloadComplications()
     }
 
     func updateWeather(weather: Weather) {
@@ -98,5 +125,17 @@ class InterfaceController: WKInterfaceController {
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
         super.didDeactivate()
+    }
+}
+
+extension InterfaceController: WCSessionDelegate {
+    func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
+        guard let dictionary = applicationContext[kWeatherResultsKey] as? [String: AnyObject] else {
+            return
+        }
+        guard let date = applicationContext[kWeatherRequestDateKey] as? NSDate else {
+            return
+        }
+        Weather.storeWeathersResult(dictionary, requestDate: date)
     }
 }
