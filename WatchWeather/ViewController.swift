@@ -31,23 +31,39 @@ class ViewController: UIPageViewController {
         vc.view.backgroundColor = UIColor.whiteColor()
         setViewControllers([vc], direction: .Forward, animated: true, completion: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "becomeActive", name: UIApplicationDidBecomeActiveNotification, object: nil)
+    }
+    
+    func becomeActive() {
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            if self.shouldRequest() {
+                self.request()
+            } else {
+                let (_, weathers) = Weather.storedWeathers()
+                if let weathers = weathers {
+                    self.updateWeathers(weathers)
+                }
+            }
+        }
+    }
+    
+    func shouldRequest() -> Bool {
+        let (requestDate, _) = Weather.storedWeathers()
+        return requestDate < NSDate.today()
+    }
+    
+    func request() {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
-        WeatherClient.sharedClient.requestWeathers { (weather, error) -> Void in
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-            if error == nil && weather != nil {
+        WeatherClient.sharedClient.requestWeathers { [unowned self] (weathers, error) -> Void in
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            if error == nil && weathers != nil {
                 
-                for w in weather! where w != nil {
-                    self.data[w!.day] = w
-                }
+                self.updateWeathers(weathers!)
                 
-                let vc = self.weatherViewControllerForDay(.Today)
-                self.setViewControllers([vc], direction: .Forward, animated: false, completion: nil)
-                
-
                 if let dic = Weather.storedWeathersDictionary() {
                     do {
-                        try self.session?.updateApplicationContext(dic)   
+                        try self.session?.updateApplicationContext(dic)
                     } catch _ {
                         
                     }
@@ -58,6 +74,15 @@ class ViewController: UIPageViewController {
                 self.presentViewController(alert, animated: true, completion: nil)
             }
         }
+    }
+    
+    func updateWeathers(weathers: [Weather?]) {
+        for w in weathers where w != nil {
+            self.data[w!.day] = w
+        }
+        
+        let vc = self.weatherViewControllerForDay(.Today)
+        self.setViewControllers([vc], direction: .Forward, animated: false, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -114,5 +139,13 @@ extension ViewController: UIPageViewControllerDataSource {
 }
 
 extension ViewController: WCSessionDelegate {
-    
+    func session(session: WCSession, didReceiveApplicationContext applicationContext: [String : AnyObject]) {
+        guard let dictionary = applicationContext[kWeatherResultsKey] as? [String: AnyObject] else {
+            return
+        }
+        guard let date = applicationContext[kWeatherRequestDateKey] as? NSDate else {
+            return
+        }
+        Weather.storeWeathersResult(dictionary, requestDate: date)
+    }
 }

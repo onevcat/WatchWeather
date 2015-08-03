@@ -17,6 +17,7 @@ class InterfaceController: WKInterfaceController {
     static var controllers = [Day: InterfaceController]()
 
     static var token: dispatch_once_t = 0
+    static var session: WCSession?
     
     @IBOutlet var weatherImage: WKInterfaceImage!
     @IBOutlet var highTempratureLabel: WKInterfaceLabel!
@@ -49,9 +50,11 @@ class InterfaceController: WKInterfaceController {
             
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "becomeActive", name: applicationDidBecomeActiveNotification, object: nil)
             
-            let session = WCSession.defaultSession()
-            session.delegate = self
-            session.activateSession()
+            if WCSession.isSupported() {
+                InterfaceController.session = WCSession.defaultSession()
+                InterfaceController.session!.delegate = self
+                InterfaceController.session!.activateSession()
+            }
         }
     }
     
@@ -77,6 +80,15 @@ class InterfaceController: WKInterfaceController {
         WeatherClient.sharedClient.requestWeathers({ [weak self] (weathers, error) -> Void in
             if let weathers = weathers {
                 self?.updateWeathers(weathers)
+                
+                if let dic = Weather.storedWeathersDictionary() {
+                    do {
+                        try InterfaceController.session?.updateApplicationContext(dic)
+                    } catch _ {
+                        
+                    }
+                }
+                
             } else {
                 let action = WKAlertAction(title: "Retry", style: .Default, handler: { () -> Void in
                     self?.request()
